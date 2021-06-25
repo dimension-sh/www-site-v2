@@ -1,0 +1,124 @@
+html, body, tr, td {
+    font-family: input-mono, monospace;
+    font-size: 1em;
+}
+
+@font-face {
+    font-family: Glass;
+    src: url(/font/glass.ttf) format("truetype");
+}
+
+div#logo {
+    text-align: center;
+}
+
+div#logo pre {
+    font-family: Glass, input-mono, monospace;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.3em;
+    line-height: 1;
+}
+
+div.bar {
+    padding: 5px;
+    padding-left: 15px;
+    border-radius: 3px;
+}
+
+div#footer {
+    margin-top: 10px;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+}
+
+div#main {
+    width: 100ch;
+    margin: 0 auto;
+}
+
+div#body {
+    padding: 10px
+}
+
+div#body pre {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+li {
+    position: relative;
+    list-style: none;
+}
+
+li:before {
+    content: "*";
+    position: absolute;
+    left: -1.25em;
+    top: 0.15em;
+}
+
+ul.user-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+}
+
+ul.user-list li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 10em;
+}
+
+ul.user-list li:before {
+    content: "";
+}
+
+input, textarea {
+    font-family: input-mono, monospace;
+    font-size: 0.75em;
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+div.news h3 {
+    margin-bottom: 1px;
+}
+
+/* Homepage Boxes */
+div.container {
+    display: flex;
+}
+
+div#home-left {
+    width: 80%;
+    margin-right: 10px;
+}
+
+/* Patchlog */
+div#patchlog {
+    font-size: 0.75em;
+}
+
+div#patchlog p {
+    margin-top: 0px;
+}

@@ -1,0 +1,37 @@
+html, body, tr, td {
+    background-color: #292D3E;
+    color: #676E95;
+}
+
+b, strong, a, a:link, a:visited, a:active, h3 {
+    color: #959DCB;
+}
+
+div#logo pre {
+    color: #959DCB;
+    text-shadow: 0 0 5px #C8C8C8;
+}
+
+a:hover {
+    color: white;
+}
+
+hr, div.bar {
+    background: #676E95;
+    color: #292D3E;
+    box-shadow: 2px 2px #3f435a;
+}
+
+h1, h2, h3, h4, h5, th, label {
+    text-shadow: 2px 2px #3f435a;
+}
+
+input, textarea {
+    background-color: #292D3E;
+    color: #676E95;
+    border: 1px solid #676E95;
+}
+
+table, div#body pre  {
+    border: 1px solid #676E95;
+}

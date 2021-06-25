@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ if isset .Data "Term" }}
+<h1>Entries tagged - "{{ .Data.Term }}"</h1>
+{{ else }}
+<h2>FILES</h2>
+{{ end }}
+
+<ul>
+{{- range .Data.Pages -}}
+  {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}-{{ dateFormat "20060102" .Date }}.html{{ if .Draft }}.swp{{end}}</a></li>
+  {{- end -}}
+{{- end -}}
+</ul>
+{{ end }}

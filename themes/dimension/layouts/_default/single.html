@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ if eq .Type "page" }}
+<h1>{{ .Title }}</h1>
+{{ else }}
+<h1>{{ .Title }}-{{ dateFormat "2006-01-02" .Date }}</h1>
+{{ end }}
+
+{{ if isset .Params "tldr" }}
+<p><strong>tl;dr:</strong> {{ .Params.tldr }}</p>
+{{ end }}
+
+{{ .Content }}
+			
+{{ if ne .Type "page" }}
+  {{ if gt .Params.tags 0 }}
+    <ul class="tags">
+    {{ range .Params.tags }}
+      <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}
+{{ end }}

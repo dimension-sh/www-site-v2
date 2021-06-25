@@ -1,0 +1,32 @@
+{{ define "main" }}
+<p><b>dimension.sh</b> is a small public linux shell host (or pubnix system) that is open to anyone who wants to
+  learn, experiment, and socialize with other like minded people.</p>
+
+<p>We offer the following services to our members:</p>
+
+<ul>
+  <li>SSH accessible Linux shell, with reasonable limits.</li>
+  <li>Email at <b>@dimension.sh</b>, with access via IMAPS.</li>
+  <li>A collection of the usual userland tools.</li>
+  <li>Basic static file hosting at <b>https://dimension.sh/~yourusername</b> and
+    <b>https://yourusername.dimension.sh</b>.</li>
+  <li>Gopher hosting at <b>gopher://dimension.sh/1/~yourusername</b>.</li>
+  <li>Gemini hosting at <b>gemini://dimension.sh/~yourusername</b>.</li>
+</ul>
+
+<p>Membership is open, all we ask if you follow a few rules. If you're interested in joining, <a href="/join.html">fill
+    in the form</a> to request an account.</p>
+
+<hr />
+
+<div class="container">
+  <div id="home-left">
+    <!--# include virtual="/cgi/news.cgi" -->
+  </div>
+
+  <div id="home-right">
+    <h4>Patch Log</h4>
+    <!--# include virtual="/cgi/patchlog.cgi" -->
+  </div>
+</div>
+{{ end }}

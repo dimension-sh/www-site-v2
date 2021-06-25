@@ -1,0 +1,28 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "dimension"
+
+[params]
+style = "greenscreen"
+
+
+[[params.links]]
+[[params.links.link]]
+name = "HOME"
+href = "/"
+[[params.links.link]]
+name = "HISTORY"
+href = "/history/"
+[[params.links.link]]
+name = "USERS"
+href = "/users/"
+[[params.links.link]]
+name = "WIKI"
+href = "/wiki/"
+[[params.links.link]]
+name = "DONATE"
+href = "/donate/"
+[[params.links.link]]
+name = "JOIN"
+href = "/join/"

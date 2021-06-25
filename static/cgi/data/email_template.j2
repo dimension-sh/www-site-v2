@@ -1,0 +1,11 @@
+A new user has requested access to dimension.sh
+
+Date:     {{ date }}
+Username: {{ username }}
+Email:    {{ email }}
+Reason:   {{ why|replace("\n", " ")|safe }}
+
+Command
+-------
+
+# mkuser {{username}} {{email}} "{{ssh_key}}"

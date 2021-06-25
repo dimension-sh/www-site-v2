@@ -1,0 +1,30 @@
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{{- $title := ( .Title ) -}}
+	{{- $siteTitle := ( .Site.Title ) -}}
+	{{- if .IsHome -}}
+	<title>{{ $siteTitle }} | Home </title>
+	{{- else -}}
+	<title>{{ $siteTitle }} | {{ $title }}</title>
+	{{- end -}}
+
+	{{- if isset .Site.Params "favicon" -}}
+	<link rel="icon" type="image/png" href={{ .Site.Params.favicon }} />
+	{{- end -}}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="{{ $.Param " description" }}" />
+	<meta name="description" content="{{ $.Params.description }}" />
+
+	{{ with .OutputFormats.Get "rss" -}}
+	{{ printf `
+	<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+	{{ end -}}
+
+	<link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/site.css" />
+	<link rel="stylesheet" type="text/css" id="theme" href="{{ .Site.BaseURL }}css/{{ .Site.Params.style }}.css" />
+	<link rel="stylesheet" href="https://use.typekit.net/njb8bgs.css">
+	<script src="{{ .Site.BaseURL }}js/theme.js"></script>
+</head>

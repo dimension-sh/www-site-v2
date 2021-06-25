@@ -1,0 +1,56 @@
+:root {
+    --base00: #282936;
+    --base01: #3a3c4e;
+    --base02: #4d4f68;
+    --base03: #626483;
+    --base04: #62d6e8;
+    --base05: #e9e9f4;
+    --base06: #f1f2f8;
+    --base07: #f7f7fb;
+    --base08: #ea51b2;
+    --base09: #b45bcf;
+    --base0A: #00f769;
+    --base0B: #ebff87;
+    --base0C: #a1efe4;
+    --base0D: #62d6e8;
+    --base0E: #b45bcf;
+    --base0F: #00f769;
+}
+
+html, body, tr, td {
+    background-color: var(--base00);
+    color: var(--base05);
+}
+
+b, strong, a, a:link, a:visited, a:active, h1, h2, h3, h4, h5, label {
+    color: var(--base0A);
+}
+
+div#logo pre {
+    color: var(--base05);
+    text-shadow: 0 0 20px var(--base03), 0 0 30px var(--base03), 0 0 40px var(--base03), 0 0 55px var(--base03), 0 0 75px var(--base03);
+}
+
+a:hover {
+    color: var(--base05);
+}
+
+hr, div.bar {
+    background: var(--base02);
+    color: var(--base05);
+    box-shadow: 2px 2px var(--base01);
+}
+
+h1, h2, h3, h4, h5, th, label {
+    text-shadow: 2px 2px var(--base02);
+}
+
+input, textarea {
+    background-color: var(--base00);
+    color: var(--base05);
+    border: 1px solid var(--base03);
+}
+
+table, div#body pre  {
+    border: 1px solid var(--base03);
+}
