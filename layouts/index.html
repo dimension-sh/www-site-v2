@@ -21,12 +21,12 @@
 
 <div class="container">
   <div id="home-left">
-    <!--# include virtual="/cgi/news.cgi" -->
+    {{ "<!--# include virtual='/cgi/news.cgi' -->" | safeHTML }}
   </div>
 
   <div id="home-right">
     <h4>Patch Log</h4>
-    <!--# include virtual="/cgi/patchlog.cgi" -->
+    {{ "<!--# include virtual='/cgi/patchlog.cgi' -->" | safeHTML }}
   </div>
 </div>
 {{ end }}
