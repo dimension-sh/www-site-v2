@@ -23,8 +23,8 @@
 	<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
 
+	<script src="{{ .Site.BaseURL }}js/theme.js"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/site.css" />
 	<link rel="stylesheet" type="text/css" id="theme" href="{{ .Site.BaseURL }}css/{{ .Site.Params.style }}.css" />
 	<link rel="stylesheet" href="https://use.typekit.net/njb8bgs.css">
-	<script src="{{ .Site.BaseURL }}js/theme.js"></script>
 </head>
