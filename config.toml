@@ -19,7 +19,7 @@ name = "USERS"
 href = "/users/"
 [[params.links.link]]
 name = "WIKI"
-href = "/wiki/"
+href = "/cgi/wiki.cgi"
 [[params.links.link]]
 name = "DONATE"
 href = "/donate/"
