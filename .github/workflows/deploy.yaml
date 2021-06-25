@@ -21,4 +21,4 @@ jobs:
             sudo git config pull.ff only
             sudo git reset --hard
             sudo git pull
-            sudo /usr/local/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh
+            sudo /usr/local/bin/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh/
