@@ -1,0 +1,5 @@
+Contact: hostmaster@dimension.sh
+Expires: Sat, 1 Jan 2022 00:00 +0100
+Encryption: https://dimension.sh/.well-known/gpg-key.txt
+Preferred-Languages: en
+Canonical: https://dimension.sh/.well-known/security.txt
