@@ -180,7 +180,7 @@ def main():
     s.send_message(msg)
     s.quit()
 
-    sys.stdout.write('Location: http://dimension.sh/join_submitted/\n\n')
+    sys.stdout.write('Location: http://dimension.sh/join/submitted/\n\n')
 
 
 if __name__ == '__main__':

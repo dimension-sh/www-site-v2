@@ -8,7 +8,7 @@ draft: false
 
 If you wish to contribute towards the costs of operating the service, we appreciate it, but don't feel like you have to. Just by being a member of **dimension.sh** you're supporting the service.
 
-## Where will my donation be used?
+## How will you use my donation?
 Your donation will support the cost of running the **dimension.sh** servers, any excess donations will be re-distributed to other tilde projects on Liberapay to support the wider community.
 
 ## What is your donation goal?

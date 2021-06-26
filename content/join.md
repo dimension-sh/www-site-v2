@@ -4,7 +4,7 @@ date: 2021-06-25T18:04:52+01:00
 draft: false
 ---
 
-Dimension is open to anyone who wants to be involved in our community, all we ask is that you follow the [RULES](/wiki/rules). If you accept them then joining is easy:
+Dimension is open to anyone who wants to be involved in our community, all we ask is that you follow the [RULES](/cgi/wiki.cgi?p=rules). If you accept them then joining is easy:
 
 All you'll need to provide is the following bits of information:
 
