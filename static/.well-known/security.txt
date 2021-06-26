@@ -1,5 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
 Contact: hostmaster@dimension.sh
-Expires: Sat, 1 Jan 2022 00:00 +0100
+Expires: 2022-01-01T00:00:00.000Z
 Encryption: https://dimension.sh/.well-known/gpg-key.txt
+Acknowledgments: https://dimension.sh/acknowledgements/
 Preferred-Languages: en
-Canonical: https://dimension.sh/.well-known/security.txt
+Policy: https://dimension.sh/.well-known/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEErtfwf+OhRqKAyttmhtq59x/yCjoFAmDXYMAACgkQhtq59x/y
+CjoF7g/8DtNZSAAyqy00/pQ9ik6fXNgPH+nilCjqqRLaYlm4AZO2IuKZfp4m55EL
+tABWYkS4yDsK86V0NzGaI3l417qVVgOruK5NDcSieag62MLanMMkSy+pILBrbvga
++ZTCMNmgW8AY5JqzMv++679sKYUUF/KJ4VJ5qa09N0sIacZ542IoN0q0KF0+Zi66
+OyMEEgspPtnbRnh4hnR+wRgiTqLoE0Ei5BYVXgJLxGtFXgrdb9t3YVHRhsT4/6Pt
+ZTCAYL14ID0Spc7ATLHvaGpmfqntpl5YcSslmbkAsMIGOjZt3LaVKMAZxKJ22V8o
+NqreeSWk3RlvhaFxJnt3unPGZY46yjJG+xJXqwebKCx6hWiuoiOtZULJkb3FbfmK
+B/pyy5vb8vdKd9fyXgUa9uSJVo7uHnpZL45Re1H62LZ08h3mngHTyAaT/3QkL7Ok
+j3dP8IprtZk464hqs3EuUBuxWqgzubi86+ylU3bsJY5cijd5Q/sV84HOA+TelFQs
+SxPHTQ6542c25qmYoCHAZv+K0AYhOoqFCl4O7N3qXG7OG/gX63K6Jl+5xs5rafvD
+0GKz40brS/ozP/kCi4DlfmBbZwuo9s5R6gD5CJJk9ljEp4yKeD+rNFxJM0/yPnOM
+cU52WD1viG01c8qj+7aqtlCrB5mHqT+1A3BECfHLPAaFeGoBsOg=
+=wim8
+-----END PGP SIGNATURE-----
