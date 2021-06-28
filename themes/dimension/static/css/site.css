@@ -18,6 +18,7 @@ div#logo pre {
     text-align: left;
     font-size: 1.3em;
     line-height: 1;
+    margin-bottom: 0;
 }
 
 div.bar {
