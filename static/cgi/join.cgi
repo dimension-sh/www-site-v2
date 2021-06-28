@@ -72,7 +72,7 @@ def validate_sshkey(keystring):
     # do we have 3 fields?
     fields = len(keystring.split(' '))
     if fields < 2:
-        return 'Incorrect number of fields (%d)' % fields
+        return 'SSH key has a incorrect number of fields (%d, expected 2)' % fields
     else:
         fsplit = keystring.split(' ')
         keytype = fsplit[0]
@@ -83,23 +83,23 @@ def validate_sshkey(keystring):
 
     # Check it is a valid type
     if not keytype in VALID_SSH_KEYTYPES:
-        return 'Invalid keytype'
+        return 'SSH key is a invalid keytype'
 
     # Decode the key data from Base64
     try:
         data = base64.decodebytes(pubkey.encode())
     except binascii.Error:
-        return 'Error decoding the pubkey'
+        return 'Error decoding the SSH pubkey'
 
     # Get the length from the data
     try:
         str_len = struct.unpack('>I', data[:4])[0]
     except struct.error:
-        return 'Error decoding key length'
+        return 'Error decoding SSH key length'
 
     # Keytype is encoded and must match
     if not data[4:4+str_len].decode('ascii') == keytype:
-        return 'Embedded keytype does not match declared keytype (%s vs %s)' % (data[4:4+str_len].decode('ascii'), keytype)
+        return 'Embedded SSH keytype does not match declared keytype (%s vs %s)' % (data[4:4+str_len].decode('ascii'), keytype)
     return True
 
 
@@ -144,7 +144,7 @@ def main():
 
     ret = validate_sshkey(ssh_key) 
     if ret is not True:
-        error(ret)
+        error('%s - Please check your SSH Key' % ret)
         return
 
     if not validate_email(email):
