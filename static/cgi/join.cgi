@@ -40,10 +40,10 @@ def validate_ip_dnsbl(ip):
 
     # Generate the query
     if isinstance(ipobj, ipaddress.IPv4Address):
-        query = ipobj.reverse_pointer.replace('.in-addr.arpa', '.dnsbl.dronebl.org')
+        query = ipobj.reverse_pointer.replace('.in-addr.arpa', '.dnsbl.dronebl.org.')
         query_type = 'A'
     elif isinstance(ipobj, ipaddress.IPv6Address):
-        query = ipobj.reverse_pointer.replace('.ip6.arpa', '.dnsbl.dronebl.org')
+        query = ipobj.reverse_pointer.replace('.ip6.arpa', '.dnsbl.dronebl.org.')
         query_type = 'AAAA'
     else:
         return False
