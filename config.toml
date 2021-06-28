@@ -4,7 +4,7 @@ title = "dimension.sh"
 theme = "dimension"
 
 [params]
-style = "greenscreen"
+style = "nord"
 
 
 [[params.links]]
