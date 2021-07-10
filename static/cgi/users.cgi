@@ -11,7 +11,7 @@ def main(output=sys.stdout):
         data = json.loads(fobj.read())
     for user in data['users']:
         output.write(
-            '<li><a href="/~{username}">~{username}</a></li>\n'.format(**user))
+            '<li><a href="/~{username}/">~{username}</a></li>\n'.format(**user))
 
     output.write("</ul>\n")
     output.write("<p>Total Users: <b>%d</b></p>" % len(data['users']))
