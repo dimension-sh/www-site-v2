@@ -61,7 +61,7 @@ def validate_ip_dnsbl(ip: str):
 def file_to_list(filename: str):
     if os.path.exists(os.path.join(DATA_FOLDER, filename)):
         with open(os.path.join(DATA_FOLDER, filename), 'r') as fobj:
-            return [x.strip() for x in fobj.readlines() if x.strip() != '']:
+            return [x.strip() for x in fobj.readlines() if x.strip() != '']
     return []
 
 
