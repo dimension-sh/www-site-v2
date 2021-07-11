@@ -120,7 +120,7 @@ def validate_email(address: str):
 def error(msg: str):
     with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as fobj:
         template = Template(fobj.read())
-    html = '<meta http-equiv="refresh" content="5; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered: %s</p>\n' % msg
+    html = '<meta http-equiv="refresh" content="10; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered:</p><p>%s</p><p>Redirecting you back to the form...</p>\n' % msg
     sys.stdout.write(template.render(html=html))
 
 
