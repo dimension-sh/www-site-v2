@@ -125,7 +125,7 @@ def error(msg: str):
 
 
 def main():
-    sys.stdout.write('Content-Type: text/html\n')
+    sys.stdout.write('Content-Type: text/html\n\n')
 
     # Get the form and extract the values
     form = cgi.FieldStorage()
