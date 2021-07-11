@@ -137,7 +137,7 @@ def main():
 
     # Validate all the things
     if not validate_ip_dnsbl(os.environ["REMOTE_ADDR"]):
-        error('Sorry, Your IP no bueno.')
+        error('Sorry, Your IP appears on DroneBL DNSBL - If this is an error, mail %s' % REQUEST_DESTINATION_EMAIL)
         return
 
     if rules != '1':
