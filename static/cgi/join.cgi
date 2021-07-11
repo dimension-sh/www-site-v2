@@ -28,7 +28,8 @@ VALID_SSH_KEYTYPES = [
     'ssh-ed25519',
 ]
 
-def validate_ip_dnsbl(ip):
+
+def validate_ip_dnsbl(ip: str):
     """Validate a IP against DroneBL"""
     resolv = dns.resolver.Resolver()
 
@@ -57,17 +58,24 @@ def validate_ip_dnsbl(ip):
     return True
 
 
-def validate_username(username):
+def file_to_list(filename: str):
+    if os.path.exists(os.path.join(DATA_FOLDER, filename)):
+        with open(os.path.join(DATA_FOLDER, filename), 'r') as fobj:
+            return [x.strip() for x in fobj.readlines() if x.strip() != '']:
+    return []
+
+
+def validate_username(username: str):
     if re.match(r"^[a-z][-a-z0-9]*$", username) is None:
-        return False
-    if os.path.exists(os.path.join(DATA_FOLDER, 'banned_usernames.txt')):
-        with open(os.path.join(DATA_FOLDER, 'banned_usernames.txt'), 'r') as fobj:
-            if username in [x.strip() for x in fobj.readlines() if x.strip() != '']:
-                return False
+        return 'Invalid username, Please try another one'
+    if username in file_to_list('banned_usernames.txt'):
+        return 'Banned username, Please try another one'
+    if username in file_to_list('reserved_usernames.txt'):
+        return 'This username is reserved, if you are the rightful owner of this username, then email %s with your SSH key' % REQUEST_DESTINATION_EMAIL
     return True
 
 
-def validate_sshkey(keystring):
+def validate_sshkey(keystring: str):
     """ Validates that SSH pubkey string is valid """
     # do we have 3 fields?
     fields = len(keystring.split(' '))
@@ -98,20 +106,22 @@ def validate_sshkey(keystring):
         return 'Error decoding SSH key length'
 
     # Keytype is encoded and must match
-    if not data[4:4+str_len].decode('ascii') == keytype:
-        return 'Embedded SSH keytype does not match declared keytype (%s vs %s)' % (data[4:4+str_len].decode('ascii'), keytype)
+    file_keytype = data[4: 4 + str_len].decode('ascii')
+    if not file_keytype == keytype:
+        return 'Embedded SSH keytype does not match declared keytype (%s vs %s)' % (file_keytype, keytype)
     return True
 
 
-def validate_email(address):
+def validate_email(address: str):
     """ QUickly validates a email address, nowhere near perfect, but good enough """
     return re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", address) != None
 
 
-def error(msg):
-    sys.stdout.write('\n')
-    sys.stdout.write('<meta http-equiv="refresh" content="3; URL=\'http://dimension.sh/join/\'"/>\n')
-    sys.stdout.write('<p>An error was encountered: %s</p>\n' % msg)
+def error(msg: str):
+    with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as fobj:
+        template = Template(fobj.read())
+    html = '<meta http-equiv="refresh" content="5; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered: %s</p>\n' % msg
+    sys.stdout.write(template.render(html=html))
 
 
 def main():
@@ -138,11 +148,12 @@ def main():
         error('All fields must be provided.')
         return
 
-    if not validate_username(username) is True:
-        error('Invalid username')
+    ret = validate_username(username)
+    if ret is not True:
+        error('%s' % ret)
         return
 
-    ret = validate_sshkey(ssh_key) 
+    ret = validate_sshkey(ssh_key)
     if ret is not True:
         error('%s - Please check your SSH Key' % ret)
         return
