@@ -1,11 +1,11 @@
 name: Deploy
-on:
+"on":
   push:
     branches:
       - main
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy to Production
     environment: production
     runs-on: ubuntu-latest
     steps:
