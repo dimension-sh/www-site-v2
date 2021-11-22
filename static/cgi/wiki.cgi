@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 
+import cgi
+import os
+import sys
+
+import markdown
 from jinja2 import Template
 from markdown.extensions.wikilinks import WikiLinkExtension
-import markdown
-import sys
-import os
-import cgi
-
 
 DATA_FOLDER = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data'))
 WIKI_ROOT = '/srv/wiki/'
-BAD_CHARACTERS = ['.', '/', '\\', ' ']
+BAD_CHARACTERS = ('.', '/', '\\', ' ')
 
-with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as fobj:
-    template = Template(fobj.read())
+with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as template_fobj:
+    template = Template(template_fobj.read())
 
 sys.stdout.write('Content-Type: text/html\n\n')
 
@@ -29,7 +29,8 @@ for char in BAD_CHARACTERS:
     page = page.replace(char, '_')
 
 # Sanitize path and check if the page exists
-page_path = os.path.abspath(os.path.join(WIKI_ROOT, '%s.md' % page))
+filename = '{0}.md'.format(page)
+page_path = os.path.abspath(os.path.join(WIKI_ROOT, filename))
 if not page_path.startswith(WIKI_ROOT) or not os.path.exists(page_path):
     page_path = os.path.join(WIKI_ROOT, '404.md')
 

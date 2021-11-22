@@ -1,37 +1,26 @@
 #!/usr/bin/env python3
 
-import sys
 import cgi
-import re
-import struct
-import binascii
-import base64
-import pwd
-import os.path
-import smtplib
-from email.message import EmailMessage
-from datetime import datetime
-
-from jinja2 import Template
 import ipaddress
-import dns.resolver
+import os
+import pwd
+import re
+import smtplib
+import sys
+from datetime import datetime
+from email.message import EmailMessage
+
+from dns import resolver
+from jinja2 import Template
+from mkuser.ssh import validate_sshkey
 
 DATA_FOLDER = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data'))
 REQUEST_DESTINATION_EMAIL = 'signup@dimension.sh'
 
-VALID_SSH_KEYTYPES = [
-    'sk-ecdsa-sha2-nistp256@openssh.com',
-    'ecdsa-sha2-nistp256',
-    'ecdsa-sha2-nistp384',
-    'ecdsa-sha2-nistp521',
-    'sk-ssh-ed25519@openssh.com',
-    'ssh-ed25519',
-]
-
 
 def validate_ip_dnsbl(ip: str):
     """Validate a IP against DroneBL"""
-    resolv = dns.resolver.Resolver()
+    resolv = resolver.Resolver()
 
     # Check the IP address
     try:
@@ -53,7 +42,7 @@ def validate_ip_dnsbl(ip: str):
     try:
         resolv.query(query, query_type)
         return False
-    except dns.resolver.NXDOMAIN:
+    except resolver.NXDOMAIN:
         pass
     return True
 
@@ -61,66 +50,29 @@ def validate_ip_dnsbl(ip: str):
 def file_to_list(filename: str):
     if os.path.exists(os.path.join(DATA_FOLDER, filename)):
         with open(os.path.join(DATA_FOLDER, filename), 'r') as fobj:
-            return [x.strip() for x in fobj.readlines() if x.strip() != '']
+            return [line.strip() for line in fobj.readlines() if line.strip() != '']
     return []
 
 
 def validate_username(username: str):
-    if re.match(r"^[a-z][-a-z0-9]*$", username) is None:
+    if re.match("^[a-z][-a-z0-9]*$", username) is None:
         return 'Invalid username, Please try another one'
     if username in file_to_list('banned_usernames.txt'):
         return 'Banned username, Please try another one'
     if username in file_to_list('reserved_usernames.txt'):
-        return 'This username is reserved, if you are the rightful owner of this username, then email %s with your SSH key' % REQUEST_DESTINATION_EMAIL
-    return True
-
-
-def validate_sshkey(keystring: str):
-    """ Validates that SSH pubkey string is valid """
-    # do we have 3 fields?
-    fields = len(keystring.split(' '))
-    if fields < 2:
-        return 'SSH key has a incorrect number of fields (%d, expected 2)' % fields
-    else:
-        fsplit = keystring.split(' ')
-        keytype = fsplit[0]
-        pubkey = fsplit[1]
-
-    if keytype == 'ssh-rsa':
-        return 'Please generate a ED25519 key rather than a RSA key'
-
-    # Check it is a valid type
-    if not keytype in VALID_SSH_KEYTYPES:
-        return 'SSH key is a invalid keytype'
-
-    # Decode the key data from Base64
-    try:
-        data = base64.decodebytes(pubkey.encode())
-    except binascii.Error:
-        return 'Error decoding the SSH pubkey'
-
-    # Get the length from the data
-    try:
-        str_len = struct.unpack('>I', data[:4])[0]
-    except struct.error:
-        return 'Error decoding SSH key length'
-
-    # Keytype is encoded and must match
-    file_keytype = data[4: 4 + str_len].decode('ascii')
-    if not file_keytype == keytype:
-        return 'Embedded SSH keytype does not match declared keytype (%s vs %s)' % (file_keytype, keytype)
+        return 'This username is reserved, if you are the rightful owner of this username, then email {0} with your SSH key'.format(REQUEST_DESTINATION_EMAIL)
     return True
 
 
 def validate_email(address: str):
-    """ QUickly validates a email address, nowhere near perfect, but good enough """
-    return re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", address) != None
+    """Quickly validates a email address, nowhere near perfect, but good enough."""
+    return re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', address) is not None
 
 
 def error(msg: str):
     with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as fobj:
         template = Template(fobj.read())
-    html = '<meta http-equiv="refresh" content="10; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered:</p><p>%s</p><p>Redirecting you back to the form...</p>\n' % msg
+    html = '<meta http-equiv="refresh" content="10; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered:</p><p>{0}</p><p>Redirecting you back to the form...</p>\n'.format(msg)
     sys.stdout.write(template.render(html=html))
 
 
@@ -137,7 +89,7 @@ def main():
 
     # Validate all the things
     if not validate_ip_dnsbl(os.environ["REMOTE_ADDR"]):
-        error('Sorry, Your IP appears on DroneBL DNSBL - If this is an error, mail %s' % REQUEST_DESTINATION_EMAIL)
+        error('Sorry, Your IP appears on DroneBL DNSBL - If this is an error, mail {0}'.format(REQUEST_DESTINATION_EMAIL))
         return
 
     if rules != '1':
@@ -150,12 +102,12 @@ def main():
 
     ret = validate_username(username)
     if ret is not True:
-        error('%s' % ret)
+        error(str(ret))
         return
 
     ret = validate_sshkey(ssh_key)
     if ret is not True:
-        error('%s - Please check your SSH Key' % ret)
+        error('{0} - Please check your SSH Key'.format(ret))
         return
 
     if not validate_email(email):
@@ -164,7 +116,7 @@ def main():
 
     try:
         if pwd.getpwnam(username):
-            error('Username %s is already took' % username)
+            error('Username {0} is already took'.format(username))
             return
     except KeyError:
         pass
@@ -172,7 +124,7 @@ def main():
     # Build Email
     with open(os.path.join(DATA_FOLDER, 'email_template.j2'), 'r') as fobj:
         template = Template(fobj.read())
-    content = template.render({
+    content_values = template.render({
         'date': datetime.now(),
         'username': username,
         'email': email,
@@ -181,15 +133,15 @@ def main():
     })
 
     msg = EmailMessage()
-    msg.set_content(content)
-    msg['Subject'] = f'[DIMENSION.SH] New User Request - {username}'
+    msg.set_content(content_values)
+    msg['Subject'] = '[DIMENSION.SH] New User Request - {0}'.format(username)
     msg['From'] = 'nobody@dimension.sh'
     msg['To'] = REQUEST_DESTINATION_EMAIL
 
     # Send email
-    s = smtplib.SMTP('localhost')
-    s.send_message(msg)
-    s.quit()
+    smtp_conn = smtplib.SMTP('localhost')
+    smtp_conn.send_message(msg)
+    smtp_conn.quit()
 
     sys.stdout.write('Location: http://dimension.sh/join/submitted/\n\n')
 
