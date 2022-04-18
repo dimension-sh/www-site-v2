@@ -68,4 +68,4 @@ The original dimension popped offline some time in 2002. Some of the original us
 
 Around June 2020, [nikdoof](/~nikdoof) discovered the [tildeverse](https://tildeverse.org/) and had a throwback to his experience with **dimension** during his college years. Instead of joining one of the existing servers he decided to create a new home for the 'dimensionites', if they would ever discover it again.
 
-**dimension.sh** came online 26th June 2020, running CentOS 8, and was open to new members on the 3rd July 2020.
+**dimension.sh** came online 26th June 2020, running CentOS 8 at Digital Ocean UK, and was open to new members on the 3rd July 2020.
