@@ -1,5 +1,5 @@
 ---
-name: Wiki
+title: Wiki
 draft: false
 layout: blank
 url: /cgi/data/wiki_template.j2
