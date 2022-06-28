@@ -19,7 +19,7 @@ REQUEST_DESTINATION_EMAIL = 'signup@dimension.sh'
 
 
 def validate_ip_dnsbl(ip: str):
-    """Validate a IP against DroneBL"""
+    """Validate a IP against DroneBL."""
     resolv = resolver.Resolver()
 
     # Check the IP address
@@ -43,8 +43,8 @@ def validate_ip_dnsbl(ip: str):
         resolv.query(query, query_type)
         return False
     except resolver.NXDOMAIN:
-        pass
-    return True
+        return True
+    return False
 
 
 def file_to_list(filename: str):
@@ -55,12 +55,15 @@ def file_to_list(filename: str):
 
 
 def validate_username(username: str):
+    """Validate the provided username that its valid and isn't in any restricted list."""
     if re.match("^[a-z][-a-z0-9]*$", username) is None:
-        return 'Invalid username, Please try another one'
+        return 'Invalid username, Please try another one.'
     if username in file_to_list('banned_usernames.txt'):
-        return 'Banned username, Please try another one'
+        return 'Banned username, Please try another one.'
     if username in file_to_list('reserved_usernames.txt'):
-        return 'This username is reserved, if you are the rightful owner of this username, then email {0} with your SSH key'.format(REQUEST_DESTINATION_EMAIL)
+        return 'This username is reserved, if you are the rightful owner of this username, then email {0} with your SSH key.'.format(REQUEST_DESTINATION_EMAIL)
+    if username in [user.pw_name for user in pwd.getpwall()]:
+        return 'This username is already took, please try another one.'
     return True
 
 
