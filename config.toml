@@ -24,5 +24,8 @@ href = "/cgi/wiki.cgi"
 name = "DONATE"
 href = "/donate/"
 [[params.links.link]]
+name = "FEDI"
+href = "https://tilde.zone/@dimension"
+[[params.links.link]]
 name = "JOIN"
 href = "/join/"
