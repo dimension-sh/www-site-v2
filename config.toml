@@ -26,6 +26,7 @@ href = "/donate/"
 [[params.links.link]]
 name = "FEDI"
 href = "https://tilde.zone/@dimension"
+rel = "me"
 [[params.links.link]]
 name = "JOIN"
 href = "/join/"
