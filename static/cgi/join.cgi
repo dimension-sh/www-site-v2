@@ -18,6 +18,10 @@ DATA_FOLDER = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__fi
 REQUEST_DESTINATION_EMAIL = 'signup@dimension.sh'
 
 
+def validate_ip(ip: str):
+    return True
+
+
 def validate_ip_dnsbl(ip: str):
     """Validate a IP against DroneBL."""
     resolv = resolver.Resolver()
@@ -59,7 +63,7 @@ def validate_username(username: str):
     if re.match("^[a-z][-a-z0-9]*$", username) is None:
         return 'Invalid username, Please try another one.'
     if username in file_to_list('banned_usernames.txt'):
-        return 'Banned username, Please try another one.'
+        return 'Sorry, an error has occurred, please try again later.'
     if username in file_to_list('reserved_usernames.txt'):
         return 'This username is reserved, if you are the rightful owner of this username, then email {0} with your SSH key.'.format(REQUEST_DESTINATION_EMAIL)
     if username in [user.pw_name for user in pwd.getpwall()]:
@@ -69,7 +73,10 @@ def validate_username(username: str):
 
 def validate_email(address: str):
     """Quickly validates a email address, nowhere near perfect, but good enough."""
-    return re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', address) is not None
+    if address in file_to_list('banned_emails.txt'):
+        return 'Sorry, an error has occurred, please try again later.'
+    if re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', address) is not None:
+        return 'Invalid email address provided.'
 
 
 def error(msg: str):
@@ -91,6 +98,9 @@ def main():
     rules = form.getvalue('rules')
 
     # Validate all the things
+    if not validate_ip(os.environ["REMOTE_ADDR"]):
+        error('Sorry, an error has occurred, please try again later.')
+
     if not validate_ip_dnsbl(os.environ["REMOTE_ADDR"]):
         error('Sorry, Your IP appears on DroneBL DNSBL - If this is an error, mail {0}'.format(REQUEST_DESTINATION_EMAIL))
         return
@@ -113,8 +123,9 @@ def main():
         error('{0} - Please check your SSH Key'.format(ret))
         return
 
-    if not validate_email(email):
-        error('Invalid email address provided')
+    ret = validate_email(email):
+    if ret is not True
+        error(ret)
         return
 
     try:
@@ -133,6 +144,7 @@ def main():
         'email': email,
         'ssh_key': ssh_key,
         'why': why,
+        'ip': os.environ["REMOTE_ADDR"],
     })
 
     msg = EmailMessage()
