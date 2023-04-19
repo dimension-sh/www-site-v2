@@ -75,8 +75,9 @@ def validate_email(address: str):
     """Quickly validates a email address, nowhere near perfect, but good enough."""
     if address in file_to_list('banned_emails.txt'):
         return 'Sorry, an error has occurred, please try again later.'
-    if re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', address) is not None:
+    if re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', address) is None:
         return 'Invalid email address provided.'
+    return True
 
 
 def error(msg: str):
@@ -124,7 +125,7 @@ def main():
         return
 
     ret = validate_email(email)
-    if ret is not True
+    if ret is not True:
         error(ret)
         return
 
