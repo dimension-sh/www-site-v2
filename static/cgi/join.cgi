@@ -123,7 +123,7 @@ def main():
         error('{0} - Please check your SSH Key'.format(ret))
         return
 
-    ret = validate_email(email):
+    ret = validate_email(email)
     if ret is not True
         error(ret)
         return
