@@ -81,6 +81,7 @@ def validate_email(address: str):
 
 
 def error(msg: str):
+    sys.stdout.write('Content-Type: text/html\n\n')
     with open(os.path.join(DATA_FOLDER, 'wiki_template.j2')) as fobj:
         template = Template(fobj.read())
     html = '<meta http-equiv="refresh" content="10; URL=\'http://dimension.sh/join/\'"/>\n<h1>JOIN</h1><p>An error was encountered:</p><p>{0}</p><p>Redirecting you back to the form...</p>\n'.format(msg)
@@ -88,8 +89,6 @@ def error(msg: str):
 
 
 def main():
-    sys.stdout.write('Content-Type: text/html\n\n')
-
     # Get the form and extract the values
     form = cgi.FieldStorage()
     username = form.getvalue('username')
