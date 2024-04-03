@@ -8,6 +8,8 @@ jobs:
     name: Deploy to Production
     environment: production
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.124.1
     steps:
       - name: Deploy to target system
         uses: appleboy/ssh-action@master
@@ -17,8 +19,11 @@ jobs:
           key: ${{ secrets.DIMENSION_DEPLOYMENT_SSH_KEY }}
           port: 22
           script: |
+            TMP=$(mktemp -d)
+            wget -O ${TMP}/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+            tar -zxvf ${TMP}/hugo.tar.gz hugo && mv hugo ${TMP} && chmod a+x ${TMP}/hugo
             cd /usr/local/src/www-site
             sudo git config pull.ff only
             sudo git reset --hard
             sudo git pull
-            sudo /usr/local/bin/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh/
+            sudo ${TMP}/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh/
