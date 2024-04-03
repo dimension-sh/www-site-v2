@@ -10,7 +10,5 @@
   </pre>
 </div>
 <div class="bar" id="header">
-  {{ range $links := .Site.Params.links }}
-  {{- range $links.link -}}<a{{ if .rel }} rel="{{ .rel }}"{{end}} href="{{ .href }}" {{ if .new_tab }} target="_blank" {{end}}>{{- .name -}}</a>&nbsp;|&nbsp;{{- end -}}
-  {{ end }}
+  {{- range .Site.Params.links -}}<a{{ if .rel }} rel="{{ .rel }}"{{end}} href="{{ .href }}" {{ if .new_tab }} target="_blank" {{end}}>{{- .name -}}</a>&nbsp;|&nbsp;{{- end -}}
 </div>

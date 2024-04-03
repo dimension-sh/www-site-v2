@@ -8,25 +8,24 @@ style = "nord"
 
 
 [[params.links]]
-[[params.links.link]]
 name = "HOME"
 href = "/"
-[[params.links.link]]
+[[params.links]]
 name = "HISTORY"
 href = "/history/"
-[[params.links.link]]
+[[params.links]]
 name = "USERS"
 href = "/users/"
-[[params.links.link]]
+[[params.links]]
 name = "WIKI"
 href = "/cgi/wiki.cgi"
-[[params.links.link]]
+[[params.links]]
 name = "DONATE"
 href = "/donate/"
-[[params.links.link]]
+[[params.links]]
 name = "FEDI"
 href = "https://tilde.zone/@dimension"
 rel = "me"
-[[params.links.link]]
+[[params.links]]
 name = "JOIN"
 href = "/join/"
