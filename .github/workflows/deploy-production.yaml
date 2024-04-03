@@ -28,3 +28,4 @@ jobs:
             sudo git reset --hard
             sudo git pull
             sudo ${TMP}/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh/
+            rm -rf ${TMP}
