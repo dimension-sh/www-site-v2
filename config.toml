@@ -18,6 +18,9 @@ shortcode = "DC"
 [[params.styles]]
 name = "nord"
 shortcode = "ND"
+[[params.styles]]
+name = "purple"
+shortcode = "PU"
 
 [[params.links]]
 name = "HOME"
