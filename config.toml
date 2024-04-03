@@ -6,6 +6,18 @@ theme = "dimension"
 [params]
 style = "nord"
 
+[[params.styles]]
+name = "greenscreen"
+shortcode = "GS"
+[[params.styles]]
+name = "palenight"
+shortcode = "PN"
+[[params.styles]]
+name = "dracula"
+shortcode = "DC"
+[[params.styles]]
+name = "nord"
+shortcode = "ND"
 
 [[params.links]]
 name = "HOME"

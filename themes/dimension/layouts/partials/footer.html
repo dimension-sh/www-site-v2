@@ -1,7 +1,5 @@
 <div class="bar" id="footer">
   <small>
-    Themes: <a href="#" onclick="change_theme('greenscreen');">GS</a> <a href="#"
-      onclick="change_theme('palenight');">PN</a> <a href="#" onclick="change_theme('dracula');">DC</a> <a href="#"
-      onclick="change_theme('nord');">ND</a>
+    Themes: {{- range .Site.Params.styles -}}<a href="#" onclick="change_theme('{{ .name }}');">{{ .shortcode }}</a>&nbsp;{{ end }}
   </small>
 </div>
