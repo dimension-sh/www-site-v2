@@ -1,13 +1,16 @@
-// Amazingly simple theme switcher
-//
-// 1. Define a CSS document as a link with a id of 'theme'
-// 2. Call change_theme(name) from wherever
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Set the previously stored theme
     var prev_theme = localStorage.getItem("theme");
     if (prev_theme != null) {
         change_theme(prev_theme);
     }
+
+    // Add handlers for the theme buttons
+    document.querySelectorAll('a[data-theme]').forEach(el => {
+        el.addEventListener('click', function () {
+            change_theme(el.dataset.theme);
+        });
+    });
 }, false);
 
 function change_theme(name) {
