@@ -138,6 +138,7 @@ h2,
 h3,
 h4,
 h5,
+th,
 label {
     color: var(--link);
 }
@@ -175,6 +176,8 @@ textarea {
 table,
 div#body pre {
     border: 1px solid var(--bar);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 @import 'themes';
