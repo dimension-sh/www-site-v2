@@ -19,8 +19,8 @@ shortcode = "DC"
 name = "nord"
 shortcode = "ND"
 [[params.styles]]
-name = "purple"
-shortcode = "PU"
+name = "jo"
+shortcode = "JO"
 [[params.styles]]
 name = "tuna"
 shortcode = "TU"

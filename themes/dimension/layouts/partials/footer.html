@@ -1,5 +1,5 @@
 <div class="bar" id="footer">
   <small>
-    Themes: {{ range .Site.Params.styles -}}<a href="#" data-theme="{{ .name }}">{{ .shortcode }}</a>&nbsp;{{ end }}
+    Themes: {{ range .Site.Params.styles -}}<a href="#" data-theme="{{ .name }}" title="{{ .name | title }}">{{ .shortcode }}</a>&nbsp;{{ end }}
   </small>
 </div>
