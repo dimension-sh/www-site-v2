@@ -22,6 +22,6 @@
 	<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
 
-	<script src="{{ .Site.BaseURL }}js/theme.js"></script>
 	{{ partialCached "css.html" . }}
+	{{ partialCached "js.html" . }}
 </head>
