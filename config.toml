@@ -4,7 +4,7 @@ title = "dimension.sh"
 theme = "dimension"
 
 [params]
-style = "nord"
+style = "forest"
 
 [[params.styles]]
 name = "greenscreen"
@@ -21,6 +21,15 @@ shortcode = "ND"
 [[params.styles]]
 name = "purple"
 shortcode = "PU"
+[[params.styles]]
+name = "tuna"
+shortcode = "TU"
+[[params.styles]]
+name = "forest"
+shortcode = "FO"
+[[params.styles]]
+name = "twine"
+shortcode = "TW"
 
 [[params.links]]
 name = "HOME"

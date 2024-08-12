@@ -1,0 +1,180 @@
+:root {
+    --logo: var(--link);
+    --link-shadow: var(--bar);
+    --logo-shadow: var(--logo);
+}
+
+html {
+    font-family: monospace;
+    font-size: 1.3em;
+    line-height: 1.2em;
+    background-color: var(--background);
+    color: var(--primary);
+}
+
+div#logo {
+    text-align: center;
+
+    pre {
+        display: inline-block;
+        text-align: left;
+        line-height: 1.1em;
+        margin-bottom: 0;
+        color: var(--logo);
+        text-shadow: 0 0 20px var(--logo-shadow), 0 0 30px var(--logo-shadow), 0 0 40px var(--logo-shadow), 0 0 55px var(--logo-shadow), 0 0 75px var(--logo-shadow);
+    }
+}
+
+div.bar {
+    padding: 5px;
+    padding-left: 15px;
+    border-radius: 3px;
+}
+
+div#footer {
+    margin-top: 10px;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+}
+
+div#main {
+    width: 100ch;
+    margin: 0 auto;
+}
+
+div#body {
+    padding: 10px pre {
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+li {
+    position: relative;
+    list-style: none;
+}
+
+li:before {
+    content: "*";
+    position: absolute;
+    left: -1.25em;
+}
+
+ul.user-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 0;
+
+    li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 0 0 15%;
+    }
+
+    li:before {
+        content: "";
+    }
+}
+
+input,
+textarea {
+    font-family: input-mono, monospace;
+    font-size: 0.75em;
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+div.news h3 {
+    margin-bottom: 1px;
+}
+
+/* Homepage Boxes */
+div.container {
+    display: flex;
+}
+
+div#home-left {
+    width: 80%;
+    margin-right: 10px;
+}
+
+/* Patchlog */
+div#patchlog {
+    font-size: 0.75em;
+
+    p {
+        margin-top: 0px;
+    }
+}
+
+
+
+b,
+strong,
+a,
+a:link,
+a:visited,
+a:active,
+h1,
+h2,
+h3,
+h4,
+h5,
+label {
+    color: var(--link);
+}
+
+
+
+a:hover {
+    color: var(--primary);
+}
+
+hr,
+div.bar {
+    background: var(--bar);
+    color: var(--primary);
+    box-shadow: 2px 2px var(--shadow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+th,
+label {
+    text-shadow: 2px 2px var(--link-shadow);
+}
+
+input,
+textarea {
+    background-color: var(--background);
+    color: var(--primary);
+    border: 1px solid var(--bar);
+}
+
+table,
+div#body pre {
+    border: 1px solid var(--bar);
+}
+
+@import 'themes';

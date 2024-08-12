@@ -1,0 +1,107 @@
+html[data-theme='dracula'] {
+    --background: #282936;
+    --shadow: #3a3c4e;
+    --bar: #4d4f68;
+    --primary: #e9e9f4;
+    --link: #00f769;
+    --logo: var(--link);
+}
+
+html[data-theme='greenscreen'] {
+    --background: #001100;
+    --shadow: #003300;
+    --bar: #005500;
+    --link: #00ff00;
+    --primary: #00bb00;
+}
+
+html[data-theme='nord'] {
+    --background: #2E3440;
+    --shadow: #3B4252;
+    --bar: #434C5E;
+    --primary: #E5E9F0;
+    --link: #8FBCBB;
+}
+
+html[data-theme='palenight'] {
+    --background: #292D3E;
+    --shadow: #444267;
+    --bar: #32374D;
+    --logo: #676E95;
+    --primary: #959DCB;
+    --link: #FFFFFF;
+}
+
+html[data-theme='purple'] {
+    --background: #001100;
+    --primary: #8575fb;
+    --link: #a296ff;
+    --shadow: #1a1153;
+    --bar: #3c3573;
+}
+
+/* New Themes */
+html[data-theme='tuna'] {
+    $back: #35333B;
+    $for: #06B7AA;
+
+    --background: #{$back};
+    --primary: #{$for};
+    --link: #{scale-color($for, $lightness: 25%)};
+    --bar: #{scale-color($for, $lightness: -30%)};
+    --shadow: #{scale-color($for, $lightness: -50%)};
+    --link-shadow: #{scale-color($back, $lightness: 25%)};
+    --logo-shadow: #{scale-color($for, $lightness: -25%)};
+}
+
+html[data-theme='twine'] {
+    $back: #371F03;
+    $for: #C9945B;
+
+    --background: #{$back};
+    --primary: #{$for};
+    --link: #{scale-color($for, $lightness: 25%)};
+    --bar: #{scale-color($for, $lightness: -30%)};
+    --shadow: #{scale-color($for, $lightness: -50%)};
+    --link-shadow: #{scale-color($back, $lightness: 25%)};
+    --logo-shadow: #{scale-color($for, $lightness: -25%)};
+}
+
+html[data-theme='cerulean'] {
+    $for: #22AAD3;
+    $back: #0B2A4B;
+
+    --background: #{$back};
+    --primary: #{$for};
+    --link: #{scale-color($for, $lightness: 25%)};
+    --bar: #{scale-color($for, $lightness: -30%)};
+    --shadow: #{scale-color($for, $lightness: -50%)};
+    --link-shadow: #{scale-color($back, $lightness: 25%)};
+    --logo-shadow: #{scale-color($for, $lightness: -25%)};
+}
+
+html[data-theme='razz'] {
+    $for: #FA1B67;
+    $back: #0E020E;
+
+    --background: #{$back};
+    --primary: #{$for};
+    --link: #{scale-color($for, $lightness: 25%)};
+    --bar: #{scale-color($for, $lightness: -30%)};
+    --shadow: #{scale-color($for, $lightness: -50%)};
+    --link-shadow: #{scale-color($back, $lightness: 25%)};
+    --logo-shadow: #{scale-color($for, $lightness: -25%)};
+}
+
+html[data-theme='forest'] {
+    $for: #178D50;
+    $back: #090203;
+
+    --background: #{$back};
+    --primary: #{$for};
+    --link: #{scale-color($for, $lightness: 25%)};
+    --bar: #{scale-color($for, $lightness: -30%)};
+    --shadow: #{scale-color($for, $lightness: -50%)};
+    --link-shadow: var(--shadow);
+    --logo-shadow: #{scale-color($for, $lightness: 5%)};
+}

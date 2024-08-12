@@ -27,5 +27,5 @@ jobs:
             sudo git config pull.ff only
             sudo git reset --hard
             sudo git pull
-            sudo ${TMP}/hugo -d /var/www/dimension.sh --gc -b https://dimension.sh/
+            sudo ${TMP}/hugo --gc --minify --cleanDestinationDir --logLevel INFO -d /var/www/dimension.sh -b https://dimension.sh/
             rm -rf ${TMP}

@@ -1,0 +1,16 @@
+{{ $opts := dict
+"transpiler" "libsass"
+"targetPath" "css/dimension.css"
+"enableSourceMap" (not hugo.IsProduction)
+}}
+{{- with resources.Get "scss/main.scss" }}
+{{- if eq hugo.Environment "development" }}
+{{- with . | toCSS $opts }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+{{- end }}
+{{- else }}
+{{- with . | toCSS $opts | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{- end }}
+{{- end }}
+{{- end }}
