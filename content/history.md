@@ -11,7 +11,7 @@ We take the name from **dimension.spodnet.uk.com**, which was a collection of mi
 We've been able to scavenge some old pages from the original dimension's website, so rather than explaining the
     history we'll present the text from the original site.
 
-**dimension**'s original "About" page, wrote by **argh** - The sysop of Dimension Mk1.
+**dimension**'s original "About" page, wrote by **argh** - The sysop of Dimension Mk1:
 
 > dimension was born on 10th October 1997. An old computer was resurrected from the ashes and reborn. From its slavery under Windows 95, dimension was given a new lease of life under linux. The box in question was a Dell Dimension series with a Pentium 75MHz processor and 16MB RAM.
 
@@ -38,7 +38,7 @@ Western Digital Caviar as well as a 9GB Seagate Barracuda....of course I could g
 
 > dimension now supports more than 30 users with ranges of interest from houses to horseracing, linux to loo rolls (okay no loo rolls). We hold the official Stagefright (still under construction...come on Tracey!) and Idlewild band homepages. We run a Linux user group (thanks to qwaszx et al. for that one), IRC server, MUD and loads of other services to keep our members happy, as well as drag the Internet community to us.
 
-From the "Servers" page:
+From the "Servers" page on the old site:
 
 > dimension is part of a much wider family of linux servers
 
