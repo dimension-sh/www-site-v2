@@ -1,3 +1,5 @@
+// Default theme is forest
+
 html[data-theme='dracula'] {
     --background: #282936;
     --shadow: #3a3c4e;
@@ -93,7 +95,7 @@ html[data-theme='razz'] {
     --logo-shadow: #{scale-color($for, $lightness: -25%)};
 }
 
-html[data-theme='forest'] {
+html[data-theme='forest'], :root {
     $for: #178D50;
     $back: #090203;
 
