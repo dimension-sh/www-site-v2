@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{{ .RelPermalink }}">
 {{- end }}
 {{- else }}
+{{- with . | toCSS $opts }}
+<!-- Want to use our style on your subsite? use this CSS -->
+<!-- <link rel="stylesheet" href="{{ .RelPermalink }}"> -->
+{{- end }}
 {{- with . | toCSS $opts | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{- end }}
