@@ -3,9 +3,6 @@ languageCode = "en-gb"
 title = "dimension.sh"
 theme = "dimension"
 
-[params]
-style = "forest"
-
 [[params.styles]]
 name = "greenscreen"
 shortcode = "GS"
